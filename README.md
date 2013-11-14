@@ -5,6 +5,7 @@ A maven plugin for the webtranslateit.com website.
 
 
 Dans votre fichier pom.xml, il faut rajouter les informations suivantes : 
+
     <plugin>
         <groupId>org.nt.maven.plugin</groupId>
         <artifactId>wti-maven-plugin</artifactId>
