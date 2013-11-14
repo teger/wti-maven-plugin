@@ -1,4 +1,4 @@
-package org.nt.maven.plugin.utils;
+package com.nouveauxterritoires.maven.wti.utils;
 
 public class Constants {
 

@@ -1,4 +1,4 @@
-package org.nt.maven.plugin;
+package com.nouveauxterritoires.maven.wti;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +18,8 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.jfrog.maven.annomojo.annotations.MojoGoal;
 import org.jfrog.maven.annomojo.annotations.MojoParameter;
 import org.jfrog.maven.annomojo.annotations.MojoPhase;
-import org.nt.maven.plugin.utils.Constants;
+
+import com.nouveauxterritoires.maven.wti.utils.Constants;
 
 @MojoGoal("init")
 @MojoPhase("generate-sources")
