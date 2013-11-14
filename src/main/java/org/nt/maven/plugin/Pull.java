@@ -35,13 +35,13 @@ public class Pull extends AbstractMojo {
 	@MojoParameter(alias = "locales", required = true)
     private String locales;
 	
-	@MojoParameter(expression="${project.build.directory}/classes", required=false)
+	@MojoParameter(alias="output.path", expression="${project.build.directory}/classes", required=false)
 	private String outputPath;
 	
 	@MojoParameter(alias="overwrite.src",required=false)
 	private boolean overwriteSrc = false;
 	
-	@MojoParameter(expression="${basedir}/src/main/resources",required=false)
+	@MojoParameter(alias="src.path", expression="${basedir}/src/main/resources",required=false)
 	private String srcPath;
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
