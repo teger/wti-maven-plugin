@@ -7,9 +7,9 @@ A maven plugin for the webtranslateit.com website.
 Dans votre fichier pom.xml, il faut rajouter les informations suivantes : 
 
     <plugin>
-        <groupId>org.nt.maven.plugin</groupId>
+        <groupId>com.nouveauxterritoires.maven</groupId>
         <artifactId>wti-maven-plugin</artifactId>
-        <version>0.7.1</version>
+        <version>0.8</version>
         <configuration>
             <file.name>nom_fichier</file.name>
             <project.token>XXXXXXXXXXXXXXX</project.token>
