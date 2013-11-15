@@ -9,7 +9,7 @@ Dans votre fichier pom.xml, il faut rajouter les informations suivantes :
     <plugin>
         <groupId>com.nouveauxterritoires.maven</groupId>
         <artifactId>wti-maven-plugin</artifactId>
-        <version>0.8</version>
+        <version>0.10</version>
         <configuration>
             <file.name>nom_fichier</file.name>
             <project.token>XXXXXXXXXXXXXXX</project.token>
@@ -45,3 +45,10 @@ où :
 Vous pouvez donc appeler les commandes suivantes dans maven, par exemple 
 
     $> mvn wti:init
+    
+    
+    
+PS : Pour ne pas avoir de problème d'encodage, vous devez spécifier au début de votre fichier xxxx.properties l'encodage souhaité.
+Exemple : # encoding: UTF-8
+Dans ce cas là, vous forcez l'encodage sur webtranslateit.com et le fichier sera bien traité en UTF-8 sur l'init, le pull et le push.
+
