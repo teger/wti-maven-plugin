@@ -1,8 +1,12 @@
 package com.nouveauxterritoires.maven.wti;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -79,12 +83,17 @@ public class Pull extends AbstractMojo {
 					    
 					    
 					    if (entity != null) {
-					        String content = EntityUtils.toString(entity);
-					        //getLog().debug("PAGE :" + content);
+					    	//Charset charset = Charset.forName("UTF-8");
+					        //String content = EntityUtils.toString(entity);
+					    	InputStream instream = entity.getContent();
+					    	String content = convertStreamToString(instream);
+					    	
+					        getLog().debug("PAGE :" + content);
 					        
 					        // and now save the file
 					        File file = new File(outputPath+"/"+ fileName + "_" + locale + ".properties");
 					        FileOutputStream fos = new FileOutputStream(file);
+					        
 					        
 					        // if file doesnt exists, then create it
 							if (!file.exists()) {
@@ -134,4 +143,40 @@ public class Pull extends AbstractMojo {
 		
 	}
     
+	
+	
+	private String convertStreamToString(InputStream is) {
+	    /*
+	     * To convert the InputStream to String we use the BufferedReader.readLine()
+	     * method. We iterate until the BufferedReader return null which means
+	     * there's no more data to read. Each line will appended to a StringBuilder
+	     * and returned as String.
+	     */
+	    BufferedReader reader = null;
+	    //try {
+	        reader = new BufferedReader(new InputStreamReader(is));
+	    /*} catch (UnsupportedEncodingException e1) {
+	        getLog().error("",e1);
+	    }*/
+	    StringBuilder sb = new StringBuilder();
+
+	    String line;
+	    try {
+	    	String NL = System.getProperty("line.separator");
+	        while ((line = reader.readLine()) != null) {
+	        	getLog().debug("line : " + line);
+	            sb.append(line + NL);
+	        }
+	    } catch (IOException e) {
+	    	getLog().error("",e);
+	    } finally {
+	        try {
+	            is.close();
+	        } catch (IOException e) {
+	        	getLog().error("",e);
+	        }
+	    }
+	    return sb.toString();
+	}
+	
 }

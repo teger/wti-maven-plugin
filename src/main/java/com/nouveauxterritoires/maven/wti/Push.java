@@ -75,7 +75,6 @@ public class Push extends AbstractMojo {
 					File file = new File(srcPath+"/"+ fileName + "_" + locale + ".properties");
 				    FileBody fb = new FileBody(file);
 				    
-				    
 					builder.addTextBody("title", fileName + "_" + locale + ".properties", ContentType.TEXT_PLAIN);
 					builder.addTextBody("desc", "", ContentType.TEXT_PLAIN);
 					builder.addPart("file", fb);
